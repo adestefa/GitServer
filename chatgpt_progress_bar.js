@@ -94,7 +94,7 @@
                 });
     
                 var t = document.createElement('div');
-                t.innerText = 'ChatGPT Token Usage';
+                t.innerText = 'Context Window';
                 Object.assign(t.style, {
                     marginBottom: '8px',
                     fontWeight: 'bold'
