@@ -19,6 +19,7 @@
 (function() {
 
     // 1. DOM Safe Wrapper Using XPath
+    
     const xPath = '/html/body/div[1]/div/div[1]/div[2]/main/div[1]/div[1]/div/div/div/div/div/div[1]';
     const result = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
     const targetElement = result.singleNodeValue;
@@ -28,7 +29,20 @@
       console.log('No element found for the given XPath.');
       return;
     } else {
-      console.log('Element found for progress bar insertion:', targetElement);
+        console.log('Element found for progress bar insertion:', targetElement);
+      
+        const xBadPath = '/html/body/div[1]/div/div[1]/div[2]/main/div[1]/div[1]/div/div[2]/div/div/div/div[5]/div/ul/li[1]/button';
+        const result2 = document.evaluate(xBadPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+        const badElement = result2.singleNodeValue;
+        console.log("BAD ELEMENT:" + badElement);
+        if (badElement === null) {
+           console.log("Bad element not found")
+        }else {
+            console.log("Bad Element Found, exiting!");
+            console.log("Satori Context Window Viewer can only run with a session history. Generate a response and try again.")
+        
+            return;
+        }   
     }
   
     // 2. Token Counter (TC) with Model Detection, Debounce, and Progress Bar
