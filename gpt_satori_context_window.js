@@ -15,7 +15,6 @@
  *  - works with session history, run after your first resopnse
  *  - breaks on home page before session starts
  */
-
 (function() {
 
   // 1. DOM Safe Wrapper Using XPath
@@ -47,7 +46,7 @@
 
   // 2. Token Counter (TC) with Model Detection, Debounce, and Progress Bar
   const TC = {
-    ver: "3.0",
+    ver: "3.5",
     
     // Selectors and default settings
     promptSelector: '#prompt-textarea',
@@ -164,6 +163,11 @@
         display: 'flex',
         alignItems: 'center',
         position: 'relative'
+      });
+
+       // ** Added onclick event: When clicked, open http://cnn.com in a new tab **
+       this.progressBarBackground.addEventListener('click', () => {
+        window.open("https://adestefa.github.io/GitServer/", "_blank");
       });
 
       // Progress fill
