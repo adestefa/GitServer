@@ -22,6 +22,7 @@
   const xPath = '/html/body/div[1]/div/div[1]/div[2]/main/div[1]/div[1]/div/div/div/div/div/div[1]';
   const result = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
   const targetElement = result.singleNodeValue;
+  const siteURL = 'https://satoriai.my.canva.site/';
   
 
   if (!targetElement) {
@@ -46,7 +47,7 @@
 
   // 2. Token Counter (TC) with Model Detection, Debounce, and Progress Bar
   const TC = {
-    ver: "3.5",
+    ver: "4.3",
     
     // Selectors and default settings
     promptSelector: '#prompt-textarea',
@@ -167,7 +168,7 @@
 
        // ** Added onclick event: When clicked, open http://cnn.com in a new tab **
        this.progressBarBackground.addEventListener('click', () => {
-        window.open("https://adestefa.github.io/GitServer/", "_blank");
+        window.open(siteURL, "_blank");
       });
 
       // Progress fill
@@ -226,7 +227,20 @@
       // Update the usage text (now inside the bar)
       this.progressText.textContent = `${used} / ${max} Tokens Used - Satori AI`;
       //console.log(`${used} / ${max} Tokens Used`);
+      
+      const remainingTokens = max - used;
+      this.remainintTokenCheck(remainingTokens);
+
     },
+
+
+    remainintTokenCheck : function (remainingTokens) {
+      //console.log(`Remaining tokens: ${remainingTokens}`);
+      if (remainingTokens < 1000) {
+        console.log("Warning: Remaining Tokens is low:" + remainingTokens);
+      }   
+    },
+
 
     startAutoUpdate: function() {
       setInterval(() => {
