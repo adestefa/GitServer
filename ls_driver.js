@@ -6,6 +6,12 @@
  * Date: 2/3/2025
  * Descrption: Manage object state using local browser storage
  * Object serialization/deserialization using JSON
+ * 
+ * versions:
+ * 0.1 : 2/3 - fixed pull bug
+ * 
+ * 
+ * 
  */
 
 
@@ -13,13 +19,15 @@
 
 var LS = {
 
+ver : "0.1",
+
 push : function (key, data){
-    console.log("Satori::LS::push:" + key);
+    console.log("Satori::LS::push: data stored as:" + key + " Data:" + data);
     this.storeJSON(key,data);
 },
 pull : function (key){
     console.log("Satori::LS::pull:" + key);
-    this.readJSON(key);
+    return this.readJSON(key);
 },
 
     /**
