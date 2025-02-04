@@ -8,8 +8,9 @@
  * Object serialization/deserialization using JSON
  * 
  * versions:
+ * 0.0 : 2/3 - Happy Birthday
  * 0.1 : 2/3 - fixed pull bug
- * 
+ * 0.2 : 2/3 - added test cases for reading writing
  * 
  * 
  */
@@ -19,7 +20,7 @@
 
 var LS = {
 
-ver : "0.1",
+ver : "0.2",
 
 push : function (key, data){
     console.log("Satori::LS::push: data stored as:" + key + " Data:" + data);
@@ -64,6 +65,46 @@ pull : function (key){
       console.error("Error reading JSON from local storage:", error);
       return null;
     }
+  },
+
+  run_tests : function() {
+    var testJSON = {
+            "list": [
+                {
+                    "name":"Anthony",
+                    "role" : "CTO"
+                }, 
+                {
+                    "name":"Rocco",
+                     "role" : "CEO"
+                },
+                {
+                    "name":"Khurrum",
+                    "role" : "CFO"
+                }
+            ]
+        }
+    
+
+    // write to local storage
+    console.log("Test Case 1: Push data into Local Storage");
+    LS.push("data", testJSON );
+
+    // read from local storage
+    console.log("Test Case 2: Pull data from local Stroate");
+    var result = LS.pull("data");
+
+    // print results
+    console.log("RESULTS:");
+    if (result.list[1].role === "CEO" ) {
+        console.log("Test Case 1 - PASS");
+        console.log("Test Case 2 - PASS");
+    } else {
+        console.log("Test Case 1 - FAIL");
+        console.log("Test Case 2 - FAIL");
+    }
+
+
   }
   
 }
