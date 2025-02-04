@@ -166,7 +166,7 @@
         position: 'relative'
       });
 
-       // ** Added onclick event: When clicked, open http://cnn.com in a new tab **
+       // ** Added onclick event: When clicked, open in a new tab **
        this.progressBarBackground.addEventListener('click', () => {
         window.open(siteURL, "_blank");
       });
