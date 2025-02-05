@@ -29,7 +29,7 @@ ver : "0.6",
 
 // return current local storage as object in console
 grep : function () {
-    console.dir(this.pull("gpt_session"));
+    console.dir(JSON.parse(this.pull("gpt_session")));
 },
 
 // given a name and data, will store as JSON in local storage
